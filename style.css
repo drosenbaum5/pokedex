@@ -1,0 +1,29 @@
+img {
+    border: 5px solid rgb(211, 211, 0);
+    padding: 10px;
+    background: linear-gradient(135deg, #cc0000 50%, white 50%);
+    margin: 10px;
+    height: 140px;
+    width: 140px;
+}
+
+img:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    background: white;
+    transform: skew(-30deg);
+    transform-origin:top;
+  }
+
+img:hover {
+    background-color: red;
+    background: url("./Poke_Ball.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
