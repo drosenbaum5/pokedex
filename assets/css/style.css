@@ -1,10 +1,35 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+
+#all-pokemon {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+    margin: auto;
+    padding: auto;
+}
+
+
+h4 {
+    font-family: 'Sigmar One', cursive;
+    margin-top: 0;
+}
+
 img {
     border: 5px solid #b3a125;
     padding: 30px;
-    background: linear-gradient(135deg, #cc0000 50%, white 50%);
+    background: linear-gradient(125deg, #cc0000 50%, white 50%);
     margin: 10px;
-    height: 150px;
+    height: 200px;
     width: 150px;
+}
+
+.card {
+    flex: 2;
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 img:after {
@@ -28,19 +53,19 @@ img:hover {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 175px;
+    height: 225px;
     width: 175px;
 }
 
 img:active {
     border: none;
     /* border: 5px solid black; */
-    opacity: 50%;
+    opacity: 70%;
     background-color: red;
     background: url("../img/open-pokeball.png");
     background-repeat: no-repeat;
     background-size: 150%;
     background-position: center;
-    height: 175px;
+    height: 225px;
     width: 175px;
 }

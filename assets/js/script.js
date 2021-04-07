@@ -7,18 +7,41 @@ function renderAllPokemon() {
         return response.json();
       })
       .then(function (pokemon) {
-        // console.log(data);
-        // console.log(pokemon);
-        // console.log(pokemon.sprites.other.dream_world.front_default);
+        
         console.log(pokemon);
         console.log(pokemon.sprites.other.dream_world.front_default);
+
+        
+        const pokemonCard = document.createElement("div");
+        pokemonCard.classList.add("card");
         const createPokemonImg = document.createElement("img");
         createPokemonImg.src = pokemon.sprites.other.dream_world.front_default;
+        const pokemonNameTag = document.createElement("h4");
+        const pokemonName = pokemon.name.toUpperCase();
+        pokemonNameTag.textContent = pokemonName;
+        pokemonCard.appendChild(createPokemonImg);
+        pokemonCard.appendChild(pokemonNameTag);
+
         const pokemonContainer = document.getElementById("all-pokemon");
-        pokemonContainer.append(createPokemonImg);
+        pokemonContainer.append(pokemonCard);
+
       });
   }
 }
+
+
+
+// const pokemonCard = document.createElement("div");
+// pokemonCard.classList.add("card");
+// const createPokemonImg = document.createElement("img");
+// createPokemonImg.src = pokemon.sprites.other.dream_world.front_default;
+// pokemonCard.appendChild(createPokemonImg);
+// const pokemonContainer = document.getElementById("all-pokemon");
+// pokemonContainer.append(pokemoncard);
+        
+
+
+
 
 function renderOnePokemon() {
   fetch(`https://pokeapi.co/api/v2/pokemon/pikachu`)
