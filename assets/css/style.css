@@ -24,7 +24,7 @@ img:hover {
     /* border: 5px solid black; */
     opacity: 50%;
     background-color: red;
-    background: url("./Poke_Ball.png");
+    background: url("../img/Poke_Ball.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -37,7 +37,7 @@ img:active {
     /* border: 5px solid black; */
     opacity: 50%;
     background-color: red;
-    background: url("./open-pokeball.png");
+    background: url("../img/open-pokeball.png");
     background-repeat: no-repeat;
     background-size: 150%;
     background-position: center;
