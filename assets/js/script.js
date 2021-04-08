@@ -22,7 +22,7 @@ const classTypes = [
 
 // Render all available pokemon from API
 function renderAllPokemon() {
-  for (let i = 1; i < 200; i++) {
+  for (let i = 1; i <= 200; i++) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
       .then(function (response) {
         return response.json();
@@ -55,12 +55,7 @@ function renderAllPokemon() {
         for (let i = 0; i < pokemon.types.length; i++) {
           const pokemonType = document.createElement("span");
           pokemonType.textContent = pokemon.types[i].type.name;
-
-          // Check if class type is part of the array. If so, add class to element
-          if (classTypes.includes(pokemonType.textContent)) {
-            pokemonType.classList.add(pokemonType.textContent);
-          }
-
+          pokemonType.classList.add(pokemonType.textContent);
           typeContainer.appendChild(pokemonType);
         }
 
