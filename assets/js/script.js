@@ -1,5 +1,26 @@
 const mainUrl = "https://pokeapi.co/api/v2/pokemon/";
 
+// CSS classes to determine pokemon type styling
+const classTypes = [
+  "dark",
+  "dragon",
+  "rock",
+  "ice",
+  "ghost",
+  "psychic",
+  "fighting",
+  "water",
+  "fairy",
+  "electric",
+  "normal",
+  "bug",
+  "flying",
+  "fire",
+  "poison",
+  "grass",
+];
+
+// Render all available pokemon from API
 function renderAllPokemon() {
   for (let i = 1; i < 200; i++) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
@@ -7,25 +28,44 @@ function renderAllPokemon() {
         return response.json();
       })
       .then(function (pokemon) {
-        console.log(pokemon);
-        console.log(pokemon.types[0].type.name);
+        // console.log(pokemon);
+        // console.log(pokemon.types[0].type.name);
 
+        // Create div to hold card and add class list of card
         const pokemonCard = document.createElement("div");
         pokemonCard.classList.add("card");
+        // Create image and set src attribute from API data
         const createPokemonImg = document.createElement("img");
         createPokemonImg.src = pokemon.sprites.other.dream_world.front_default;
+        // Create h3 and set text content from API data
         const pokemonNameTag = document.createElement("h3");
         const pokemonName = pokemon.name.toUpperCase();
         pokemonNameTag.textContent = pokemon.id + ". " + pokemonName;
+        // Append everything to the card
         pokemonCard.appendChild(createPokemonImg);
         pokemonCard.appendChild(pokemonNameTag);
 
+        // Create div to hold span tags which indicate pokemon type
+        // Add class list of container and append to the card
         const typeContainer = document.createElement("div");
         typeContainer.classList.add("type-container");
         pokemonCard.appendChild(typeContainer);
+
+        // Determine class to add based on pokemon type
         for (let i = 0; i < pokemon.types.length; i++) {
           const pokemonType = document.createElement("span");
           pokemonType.textContent = pokemon.types[i].type.name;
+
+          // if (pokemonType.textContent == "grass") {
+          //   console.log("It's a grass pokemon!");
+          //   pokemonType.classList.add("grass");
+          // }
+
+          // for(let j = 0; j < classTypes.length; j++) {
+          //   if (pokemonType.textContent == classTypes[i]) {
+          //       pokemonType.classList.add(classTypes[i]);
+          //   }
+          // }
           typeContainer.appendChild(pokemonType);
         }
 
@@ -33,15 +73,25 @@ function renderAllPokemon() {
         pokemonContainer.append(pokemonCard);
       });
   }
+  let allPokemonTypes = document.querySelectorAll("span");
+  console.log(allPokemonTypes);
 }
 
-// const pokemonCard = document.createElement("div");
-// pokemonCard.classList.add("card");
-// const createPokemonImg = document.createElement("img");
-// createPokemonImg.src = pokemon.sprites.other.dream_world.front_default;
-// pokemonCard.appendChild(createPokemonImg);
-// const pokemonContainer = document.getElementById("all-pokemon");
-// pokemonContainer.append(pokemoncard);
+// Still not working
+function determineType() {
+  let allPokemonTypes = document.querySelectorAll("span");
+  console.log(allPokemonTypes);
+  console.log(allPokemonTypes[0].textContent);
+  console.log(allPokemonTypes[1].textContent);
+
+  for (let i = 0; i < allPokemonTypes.length; i++) {
+    console.log("IIITTS WORKING");
+
+    if (allPokemonTypes[i].value == classTypes[i]) {
+      allPokemonTypes[i].classList.add(classTypes[i]);
+    }
+  }
+}
 
 function renderOnePokemon() {
   fetch(`https://pokeapi.co/api/v2/pokemon/pikachu`)
@@ -49,7 +99,6 @@ function renderOnePokemon() {
       return response.json();
     })
     .then(function (pokemon) {
-      // console.log(data);
       const pokemonCard = document.createElement("div");
       pokemonCard.classList.add("card");
       const createPokemonImg = document.createElement("img");
@@ -66,6 +115,11 @@ function renderOnePokemon() {
       for (let i = 0; i < pokemon.types.length; i++) {
         const pokemonType = document.createElement("span");
         pokemonType.textContent = pokemon.types[i].type.name;
+        console.log(pokemonType.value);
+        if (pokemonType.value == "grass") {
+          console.log("It's a grass pokemon!");
+          pokemonType.classList.add("grass");
+        }
         typeContainer.appendChild(pokemonType);
       }
 
@@ -75,4 +129,5 @@ function renderOnePokemon() {
 }
 
 renderAllPokemon();
+
 // renderOnePokemon();
