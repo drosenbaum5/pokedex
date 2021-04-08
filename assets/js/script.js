@@ -1,7 +1,7 @@
 const mainUrl = "https://pokeapi.co/api/v2/pokemon/";
-const searchBtn = document.getElementById("search-button")
-const viewOriginal = document.getElementById('view-original')
-const clearResults =  document.getElementById('all-pokemon');
+const searchBtn = document.getElementById("search-button");
+const viewOriginal = document.getElementById("view-original");
+const clearResults = document.getElementById("all-pokemon");
 
 // Render all available pokemon from API
 function getAllPokemon() {
@@ -62,22 +62,19 @@ function getOnePokemon(pokemon) {
     });
 }
 
-
-
 // renderAllPokemon();
 
 // renderOnePokemon();
 
 searchBtn.addEventListener("click", function (e) {
-  console.log("Clicky Clicky")
-  e.preventDefault()
-
-  clearResults.innerHTML = ""
-  let searchValue = document.getElementById('search-field').value.trim().toLowerCase()
+  console.log("Clicky Clicky");
+  e.preventDefault();
+  clearResults.innerHTML = "";
+  let searchValue = document.getElementById("search-field").value.trim().toLowerCase();
   getOnePokemon(searchValue);
-}) 
+});
 
 viewOriginal.addEventListener("click", function () {
-  clearResults.innerHTML = ""
+  clearResults.innerHTML = "";
   getAllPokemon();
-})
+});
