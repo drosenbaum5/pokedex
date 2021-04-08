@@ -1,9 +1,11 @@
 const mainUrl = "https://pokeapi.co/api/v2/pokemon/";
-
+const searchBtn = document.getElementById("search-button")
+const viewOriginal = document.getElementById('view-original')
+const clearResults =  document.getElementById('all-pokemon');
 
 // Render all available pokemon from API
-function renderAllPokemon() {
-  for (let i = 1; i <= 200; i++) {
+function getAllPokemon() {
+  for (let i = 1; i <= 150; i++) {
     fetch(`${mainUrl}${i}`)
       .then(function (response) {
         return response.json();
@@ -21,10 +23,13 @@ function renderPokemon(pokemon) {
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add("card");
 
+  // Create div to hold span tags which indicate pokemon type
+  // Add class list of container and append to the card
   const typeContainer = document.createElement("div");
   typeContainer.classList.add("type-container");
   pokemonCard.appendChild(typeContainer);
 
+  // Determine class to add based on pokemon type
   for (let i = 0; i < pokemon.types.length; i++) {
     const pokemonType = document.createElement("span");
     pokemonType.textContent = pokemon.types[i].type.name;
@@ -42,17 +47,13 @@ function renderPokemon(pokemon) {
   pokemonCard.appendChild(createPokemonImg);
   pokemonCard.appendChild(pokemonNameTag);
 
-  // Create div to hold span tags which indicate pokemon type
-  // Add class list of container and append to the card
-
-  // Determine class to add based on pokemon type
-
+  // Append card to the page
   const pokemonContainer = document.getElementById("all-pokemon");
   pokemonContainer.append(pokemonCard);
 }
 
-function renderOnePokemon() {
-  fetch(`${mainUrl}pikachu`)
+function getOnePokemon(pokemon) {
+  fetch(`${mainUrl}${pokemon}`)
     .then(function (response) {
       return response.json();
     })
@@ -61,6 +62,22 @@ function renderOnePokemon() {
     });
 }
 
-renderAllPokemon();
+
+
+// renderAllPokemon();
 
 // renderOnePokemon();
+
+searchBtn.addEventListener("click", function (e) {
+  console.log("Clicky Clicky")
+  e.preventDefault()
+
+  clearResults.innerHTML = ""
+  let searchValue = document.getElementById('search-field').value.trim().toLowerCase()
+  getOnePokemon(searchValue);
+}) 
+
+viewOriginal.addEventListener("click", function () {
+  clearResults.innerHTML = ""
+  getAllPokemon();
+})

@@ -1,5 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
 
+body {
+  background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
+    linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+    linear-gradient(-45deg, transparent 75%, black 80%, transparent 0);
+    /* radial-gradient(gray 2px, transparent 0); */
+  background-size: 30px 30px, 30px 30px;
+
+  /* color: #fff;
+  background: repeating-linear-gradient(45deg, #585858 0, #525252 5%, #4f4f4f 0, #d6d6d6 50%) 0 /
+    10px 10px; */
+}
+
+body {
+  margin: 0px;
+}
 /* Main container for displaying pokemon */
 #all-pokemon {
   display: flex;
@@ -8,7 +23,7 @@
   margin: auto;
   padding: auto;
 }
- /* span tags container for pokemon type */
+/* span tags container for pokemon type */
 .type-container {
   position: absolute;
   z-index: 100;
@@ -31,7 +46,7 @@ span {
   font-size: 14px;
   float: left;
 }
- /* styling for pokemon names */
+/* styling for pokemon names */
 h3 {
   color: white;
   font-family: "Sigmar One", cursive;
@@ -53,6 +68,7 @@ img {
 }
 
 .card {
+  /* margin: 2px; */
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -76,7 +92,7 @@ img:after {
 img:hover {
   border: none;
   /* border: 5px solid black; */
-  opacity: 80%;
+  opacity: 85%;
   background-color: red;
   background: url("../img/Poke_Ball.png");
   background-repeat: no-repeat;
