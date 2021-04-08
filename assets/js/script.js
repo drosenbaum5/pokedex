@@ -56,40 +56,17 @@ function renderAllPokemon() {
           const pokemonType = document.createElement("span");
           pokemonType.textContent = pokemon.types[i].type.name;
 
-          // if (pokemonType.textContent == "grass") {
-          //   console.log("It's a grass pokemon!");
-          //   pokemonType.classList.add("grass");
-          // }
+          // Check if class type is part of the array. If so, add class to element
+          if (classTypes.includes(pokemonType.textContent)) {
+            pokemonType.classList.add(pokemonType.textContent);
+          }
 
-          // for(let j = 0; j < classTypes.length; j++) {
-          //   if (pokemonType.textContent == classTypes[i]) {
-          //       pokemonType.classList.add(classTypes[i]);
-          //   }
-          // }
           typeContainer.appendChild(pokemonType);
         }
 
         const pokemonContainer = document.getElementById("all-pokemon");
         pokemonContainer.append(pokemonCard);
       });
-  }
-  let allPokemonTypes = document.querySelectorAll("span");
-  console.log(allPokemonTypes);
-}
-
-// Still not working
-function determineType() {
-  let allPokemonTypes = document.querySelectorAll("span");
-  console.log(allPokemonTypes);
-  console.log(allPokemonTypes[0].textContent);
-  console.log(allPokemonTypes[1].textContent);
-
-  for (let i = 0; i < allPokemonTypes.length; i++) {
-    console.log("IIITTS WORKING");
-
-    if (allPokemonTypes[i].value == classTypes[i]) {
-      allPokemonTypes[i].classList.add(classTypes[i]);
-    }
   }
 }
 
