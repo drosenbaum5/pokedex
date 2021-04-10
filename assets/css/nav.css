@@ -16,6 +16,10 @@ header {
   border-bottom: 8px solid rgb(214, 1, 1);
 }
 
+.topnav:hover {
+  border-bottom: 6px solid rgb(214, 1, 1);
+}
+
 .topnav a {
   float: left;
   display: block;

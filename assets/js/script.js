@@ -5,9 +5,9 @@ const clearResults = document.getElementById("all-pokemon");
 const pokeBall = document.querySelector(".center-on-page")
 
 // Render all available pokemon from API
-function getAllPokemon() {
+async function getAllPokemon() {
   for (let i = 1; i <= 150; i++) {
-    fetch(`${mainUrl}${i}`)
+    const response = await fetch(`${mainUrl}${i}`)
       .then(function (response) {
         return response.json();
       })
@@ -53,8 +53,8 @@ function renderPokemon(pokemon) {
   pokemonContainer.append(pokemonCard);
 }
 
-function getOnePokemon(pokemon) {
-  fetch(`${mainUrl}${pokemon}`)
+async function getOnePokemon(pokemon) {
+  const respone = await fetch(`${mainUrl}${pokemon}`)
     .then(function (response) {
       return response.json();
     })
