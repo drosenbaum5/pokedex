@@ -2,7 +2,7 @@ const mainUrl = "https://pokeapi.co/api/v2/pokemon/";
 const searchBtn = document.getElementById("search-button");
 const viewOriginal = document.getElementById("view-original");
 const clearResults = document.getElementById("all-pokemon");
-const pokeBall = document.querySelector(".center-on-page")
+const pokeBall = document.querySelector(".center-on-page");
 
 // Render all available pokemon from API
 async function getAllPokemon() {
@@ -63,12 +63,11 @@ async function getOnePokemon(pokemon) {
     });
 }
 
-
 // Event listener for single search
 searchBtn.addEventListener("click", function (e) {
   console.log("Clicky Clicky");
   e.preventDefault();
-  pokeBall.setAttribute("style", "display:none;")
+  pokeBall.setAttribute("style", "display:none;");
   clearResults.innerHTML = "";
   let searchValue = document.getElementById("search-field").value.trim().toLowerCase();
   getOnePokemon(searchValue);
@@ -77,13 +76,12 @@ searchBtn.addEventListener("click", function (e) {
 // Search Original 150 pokemon
 pokeBall.addEventListener("click", function () {
   clearResults.innerHTML = "";
-  pokeBall.setAttribute("style", "display:none;")
+  pokeBall.setAttribute("style", "display:none;");
   getAllPokemon();
 });
 
-
 viewOriginal.addEventListener("click", function () {
   clearResults.innerHTML = "";
-  pokeBall.setAttribute("style", "display:none;")
+  pokeBall.setAttribute("style", "display:none;");
   getAllPokemon();
 });

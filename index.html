@@ -12,18 +12,46 @@
   <body>
     <!-- Header element -->
     <header>
-      <nav class="topnav" id="myTopnav">
+      <!-- <nav class="topnav" id="myTopnav">
         <a class="active" href="./index.html">Home</a>
         <a href="#" id="view-original">Pokedex</a>
         
           <div class="search-container">
             <form action="/action_page.php">
-              <input type="text" placeholder="Name or number..." name="search" id="search-field" />
+              <input type="text" placeholder="Name or number..." name="search" id="search-field" autocomplete="off"/>
+              <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+       
+      </nav> -->
+
+      <nav class="topnav" id="myTopnav">
+        <a class="active" href="./index.html">Home</a>
+        <div class="dropdown">
+          <button class="dropbtn">Pokedex 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" id="view-original">Kanto</a>
+            <a href="#">Johto</a>
+            <a href="#">Hoenn</a>
+            <a href="#">Sinnoh</a>
+            <a href="#">Unova</a>
+          </div>
+         
+
+        </div>
+       
+        
+          <div class="search-container">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Name or number..." name="search" id="search-field" autocomplete="off"/>
               <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
             </form>
           </div>
        
       </nav>
+
     </header>
 
     <div class="center-on-page">
@@ -37,7 +65,6 @@
     <!-- container for all pokemon search -->
     <div class="container" id="all-pokemon"></div>
     <script src="https://kit.fontawesome.com/bf9178ae7b.js" crossorigin="anonymous"></script>
-    <script src="./test/async.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
