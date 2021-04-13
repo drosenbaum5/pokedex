@@ -1,15 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
 
 body {
-  background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
-    linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+  /* option 1 */
+  /* background-image: linear-gradient(45deg, transparent 18%, black 25%, transparent 20%),
+    linear-gradient(-45deg, transparent 18%, black 25%, transparent 20%),
+    linear-gradient(-45deg, transparent 75%, black 80%, transparent 0); */
+  /* radial-gradient(gray 2px, transparent 0); */
+  /* background-size: 30px 30px, 30px 30px; */
+ /* option 2 */
+  background-image: linear-gradient(45deg, transparent 18%, black 25%, transparent 20%),
+    linear-gradient(-45deg, transparent 18%, black 25%, transparent 20%),
     linear-gradient(-45deg, transparent 75%, black 80%, transparent 0);
   /* radial-gradient(gray 2px, transparent 0); */
   background-size: 30px 30px, 30px 30px;
-
-  /* color: #fff;
-  background: repeating-linear-gradient(45deg, #585858 0, #525252 5%, #4f4f4f 0, #d6d6d6 50%) 0 /
-    10px 10px; */
 }
 
 body {
@@ -53,6 +56,7 @@ body::-webkit-scrollbar-thumb {
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
   margin: 0 auto;
+  
 }
 
 /* styling for span pokemon types */
@@ -269,6 +273,8 @@ img:active {
   /* background: url("https://media.giphy.com/media/l9UYYO6q9lVI6nuMOj/giphy.gif"); */
   background: url("https://media.giphy.com/media/5zkGniG00Pb0GJK8rQ/giphy.gif");
   /* background: url("https://media.giphy.com/media/npYearBmbNof09ameV/giphy.gif"); */
+  /* width: 400px;
+  height: 400px; */
 }
 
 

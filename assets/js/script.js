@@ -1,12 +1,29 @@
 const mainUrl = "https://pokeapi.co/api/v2/pokemon/";
 const searchBtn = document.getElementById("search-button");
-const viewOriginal = document.getElementById("view-original");
+const kantoPokemon = document.getElementById("kanto");
 const clearResults = document.getElementById("all-pokemon");
 const pokeBall = document.querySelector(".center-on-page");
+const dropDownContent = document.querySelector(".dropdown-content");
 
 // Render all available pokemon from API
-async function getAllPokemon() {
-  for (let i = 1; i <= 150; i++) {
+// async function getAllPokemon() {
+//   for (let i = 1; i <= 150; i++) {
+//     const response = await fetch(`${mainUrl}${i}`)
+//       .then(function (response) {
+//         return response.json();
+//       })
+//       .then(function (data) {
+//         // console.log(pokemon);
+//         // console.log(pokemon.types[0].type.name);
+//         renderPokemon(data);
+//       });
+//   }
+// }
+
+async function getAllPokemon(lower, upper) {
+  clearResults.innerHTML = "";
+  pokeBall.setAttribute("style", "display:none;");
+  for (let i = lower; i <= upper; i++) {
     const response = await fetch(`${mainUrl}${i}`)
       .then(function (response) {
         return response.json();
@@ -77,11 +94,32 @@ searchBtn.addEventListener("click", function (e) {
 pokeBall.addEventListener("click", function () {
   clearResults.innerHTML = "";
   pokeBall.setAttribute("style", "display:none;");
-  getAllPokemon();
+  getAllPokemon(1, 150);
 });
 
-viewOriginal.addEventListener("click", function () {
-  clearResults.innerHTML = "";
-  pokeBall.setAttribute("style", "display:none;");
-  getAllPokemon();
+
+// Event delegation for handling region clicks
+dropDownContent.addEventListener("click", function (e) {
+  console.log(e.target.id);
+  const generation = e.target.id;
+  switch (generation) {
+    case "kanto":
+      getAllPokemon(1, 150)
+      break;
+    case "johto":
+      getAllPokemon(152, 251)
+      break;
+    case "hoenn":
+      getAllPokemon(252, 386)
+      break;
+    case "sinnoh":
+      getAllPokemon(387, 493)
+      break;
+    case "unova":
+      getAllPokemon(493, 649)
+      break;
+
+    default:
+      break;
+  }
 });
