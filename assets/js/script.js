@@ -5,21 +5,6 @@ const clearResults = document.getElementById("all-pokemon");
 const pokeBall = document.querySelector(".center-on-page");
 const dropDownContent = document.querySelector(".dropdown-content");
 
-// Render all available pokemon from API
-// async function getAllPokemon() {
-//   for (let i = 1; i <= 150; i++) {
-//     const response = await fetch(`${mainUrl}${i}`)
-//       .then(function (response) {
-//         return response.json();
-//       })
-//       .then(function (data) {
-//         // console.log(pokemon);
-//         // console.log(pokemon.types[0].type.name);
-//         renderPokemon(data);
-//       });
-//   }
-// }
-
 async function getAllPokemon(lower, upper) {
   clearResults.innerHTML = "";
   pokeBall.setAttribute("style", "display:none;");
@@ -56,7 +41,16 @@ function renderPokemon(pokemon) {
   }
   // Create image and set src attribute from API data
   const createPokemonImg = document.createElement("img");
-  createPokemonImg.src = pokemon.sprites.other.dream_world.front_default;
+
+  const imageSrc1 = pokemon.sprites.other.dream_world.front_default;
+  const imageSrc2 = pokemon.sprites.other["official-artwork"].front_default;
+  // Determine image source for card
+  if (imageSrc1 == null) {
+    createPokemonImg.src = imageSrc2;
+  } else {
+    createPokemonImg.src = imageSrc1;
+  }
+
   // Create h3 and set text content from API data
   const pokemonNameTag = document.createElement("h3");
   const pokemonName = pokemon.name.toUpperCase();
@@ -76,6 +70,7 @@ async function getOnePokemon(pokemon) {
       return response.json();
     })
     .then(function (data) {
+      console.log(data);
       renderPokemon(data);
     });
 }
@@ -97,26 +92,25 @@ pokeBall.addEventListener("click", function () {
   getAllPokemon(1, 150);
 });
 
-
 // Event delegation for handling region clicks
 dropDownContent.addEventListener("click", function (e) {
   console.log(e.target.id);
   const generation = e.target.id;
   switch (generation) {
     case "kanto":
-      getAllPokemon(1, 150)
+      getAllPokemon(1, 150);
       break;
     case "johto":
-      getAllPokemon(152, 251)
+      getAllPokemon(152, 251);
       break;
     case "hoenn":
-      getAllPokemon(252, 386)
+      getAllPokemon(252, 386);
       break;
     case "sinnoh":
-      getAllPokemon(387, 493)
+      getAllPokemon(387, 493);
       break;
     case "unova":
-      getAllPokemon(493, 649)
+      getAllPokemon(493, 650);
       break;
 
     default:
