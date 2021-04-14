@@ -7,7 +7,7 @@ body {
     linear-gradient(-45deg, transparent 75%, black 80%, transparent 0); */
   /* radial-gradient(gray 2px, transparent 0); */
   /* background-size: 30px 30px, 30px 30px; */
- /* option 2 */
+  /* option 2 */
   background-image: linear-gradient(45deg, transparent 18%, black 25%, transparent 20%),
     linear-gradient(-45deg, transparent 18%, black 25%, transparent 20%),
     linear-gradient(-45deg, transparent 75%, black 80%, transparent 0);
@@ -41,6 +41,11 @@ body::-webkit-scrollbar-thumb {
   margin: auto;
   padding: auto;
 }
+
+.hide {
+  display: none !important;
+}
+
 /* span tags container for pokemon type */
 .type-container {
   position: absolute;
@@ -56,7 +61,6 @@ body::-webkit-scrollbar-thumb {
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
   margin: 0 auto;
-  
 }
 
 /* styling for span pokemon types */
@@ -101,7 +105,6 @@ h3 {
 .card:hover {
   /* border: 7px solid blue; */
   border-radius: 10px;
-  
 }
 
 img {
@@ -254,15 +257,17 @@ img:active {
   box-sizing: border-box;
 } */
 
+/* Pokéball Styles */
+
 .center-on-page {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-top: 4px solid #cac9c6;;
-  border-bottom: 3px solid #cac9c6;;
-  border-right: 7px solid #cac9c6;;
-  border-left: 7px solid #cac9c6;;
+  border-top: 4px solid #cac9c6;
+  border-bottom: 3px solid #cac9c6;
+  border-right: 7px solid #cac9c6;
+  border-left: 7px solid #cac9c6;
   border-radius: 10px;
   /* testing */
   padding: 30px;
@@ -277,9 +282,6 @@ img:active {
   height: 400px; */
 }
 
-
-
-/* Poké Styles */
 .pokeball {
   position: relative;
   width: 200px;
@@ -295,7 +297,6 @@ img:active {
 .pokeball:hover {
   animation: shake2 1s;
   animation-iteration-count: infinite;
-  
 }
 
 .pokeball__button:hover {

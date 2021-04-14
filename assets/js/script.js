@@ -4,10 +4,12 @@ const kantoPokemon = document.getElementById("kanto");
 const clearResults = document.getElementById("all-pokemon");
 const pokeBall = document.querySelector(".center-on-page");
 const dropDownContent = document.querySelector(".dropdown-content");
+const pokeBallLoader = document.querySelector(".pokeball-wrapper")
 
 async function getAllPokemon(lower, upper) {
   clearResults.innerHTML = "";
   pokeBall.setAttribute("style", "display:none;");
+  pokeBallLoader.classList.remove("hide");
   for (let i = lower; i <= upper; i++) {
     const response = await fetch(`${mainUrl}${i}`)
       .then(function (response) {
@@ -19,12 +21,16 @@ async function getAllPokemon(lower, upper) {
         renderPokemon(data);
       });
   }
+  pokeBallLoader.classList.add("hide");
+  showCards();
 }
 
 function renderPokemon(pokemon) {
   // Create div to hold card and add class list of card
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add("card");
+  // Hide cards so they do not appear before they have all loaded
+  pokemonCard.classList.add("hide");
 
   // Create div to hold span tags which indicate pokemon type
   // Add class list of container and append to the card
@@ -72,7 +78,16 @@ async function getOnePokemon(pokemon) {
     .then(function (data) {
       console.log(data);
       renderPokemon(data);
+      showCards();
     });
+}
+
+function showCards() {
+  // Remove hide class from cards once all have rendered
+  const showCards = document.querySelectorAll(".card");
+  for (const card of showCards) {
+    card.classList.remove("hide");
+  }
 }
 
 // Event listener for single search
